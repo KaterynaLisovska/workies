@@ -32,7 +32,7 @@ const App = () => {
     "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/"
   );
 
-  return <RouterProvider router={router} />;
+  return (<RouterProvider router={router} />);
 };
 
 export default App;
