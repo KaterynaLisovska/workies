@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
 
+import "../layout.css";
+
 function RootLayout() {
   return (
-    <>
-      <main>
+    <div className="backcolor">
+      <main className={`container container_center`}>
         <Outlet />
       </main>
-    </>
+    </div>
   );
 }
 

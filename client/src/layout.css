@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+}
+
+.container_center {
+  justify-content: center;
+  display: flex;
+}
+
+.container_row {
+  flex-direction: row;
+  column-gap: 10px;
+  display: flex;
+}
+
+.container_column {
+  flex-direction: column;
+  row-gap: 10px;
+  display: flex;
+}
+
+.item {
+  align-self: center;
+  margin-top: 80px;
+}
+
+.flex_end {
+  justify-content: flex-end;
+}
+
+.backcolor {
+  background: var(--sl-color-primary-500);
+  width: 1366px;
+  height: 649px;
+}
