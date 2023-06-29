@@ -61,7 +61,7 @@ const SignUpPage = () => {
 
           <div className={`container_row flex_end`}>
             <span>Already have an account?</span>
-            <Link to="login">Login</Link>
+            <Link to="/login">Login</Link>
           </div>
           <div>
             <hr className={classes.hr} />

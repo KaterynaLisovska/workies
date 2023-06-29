@@ -20,7 +20,7 @@ body {
 
 .container_row {
   flex-direction: row;
-  column-gap: 10px;
+  column-gap: 20px;
   display: flex;
 }
 
