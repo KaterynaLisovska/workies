@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { SlCard } from "@shoelace-style/shoelace/dist/react";
@@ -7,58 +7,55 @@ import { SlButton } from "@shoelace-style/shoelace/dist/react";
 import { SlIcon } from "@shoelace-style/shoelace/dist/react";
 
 import classes from "./SignUp.module.css";
-import "normalize.css";
 
 const SignUpPage = () => {
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredPassword, setEnteredPassword] = useState("");
-  const [enteredConfirmation, setEnteredConfirmation] = useState("");
+  const [formData, setFormData] = useState({email: "", password: "", confirmationPassword: ""});
 
-  const submitHandler = () => {
-    if (
-      (enteredEmail) =>
-        /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{3,4}$/i.test(enteredEmail)
-    ) {
-      setEnteredEmail(enteredEmail);
-      setIsButtonDisabled(false);
+  const inputHandler = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  }
+
+  const submitHandler = (event) => {
+    event.preventDefault()
+    console.log(`Name: ${formData.email}, Email: ${formData.password}, Message: ${formData.confirmationPassword}`);
+
+    if (formData.password !== formData.confirmationPassword) {
+//      TODO apply validation
     }
-
-    if ((enteredPassword) => enteredPassword.trim() !== "") {
-      setEnteredPassword(enteredPassword);
-      console.log(enteredPassword);
-    }
-
-    if (enteredPassword === enteredConfirmation) {
-      setEnteredConfirmation(enteredConfirmation);
-    }
-  };
-
-  const inputHandler = () => {
-    setIsButtonDisabled(false);
   };
 
   return (
     <>
-      <SlCard className={`${classes.card} item`} onSubmit={submitHandler}>
-        <div className="container_column">
-          <h1 className={classes.h1}>Create your account</h1>
+      <SlCard className={`${classes.sign_up_form}`}>
+        <form className="container_column" onSubmit={submitHandler}>
+          <h1>Create your account</h1>
           <div className="container_column">
-            <SlInput type="email" placeholder="Email" onInput={inputHandler} />
             <SlInput
-              type="password"
-              placeholder="Create password"
-              size="medium"
-              password-toggle
+              onInput={inputHandler}
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
             />
             <SlInput
+              onInput={inputHandler}
               type="password"
-              placeholder="Confirm password"
-              size="medium"
+              name="password"
+              placeholder="Create password"
               password-toggle
+              required
+            />
+            <SlInput
+              onInput={inputHandler}
+              type="password"
+              name="confirmationPassword"
+              placeholder="Confirm password"
+              password-toggle
+              required
             />
           </div>
-          <SlButton variant="primary" type="submit" disabled={isButtonDisabled}>
+          <SlButton variant="primary" type="submit">
             Sign Up
           </SlButton>
 
@@ -71,24 +68,24 @@ const SignUpPage = () => {
           </div>
 
           <div className="container_column">
-            <SlButton variant="primary" outline>
+            <SlButton>
               <SlIcon
                 className={classes.icon}
                 slot="prefix"
-                src="https://a.allegroimg.com/original/346332/47549ea444eba9db98fe50d3f374/information-social-facebook-1b4340531f.svg"
+                src="img/information-social-facebook.svg"
               ></SlIcon>
               Login with Facebook
             </SlButton>
-            <SlButton variant="primary" outline>
+            <SlButton>
               <SlIcon
                 className={classes.icon}
                 slot="prefix"
-                src="https://a.allegroimg.com/original/34f5a2/5c5e952746b198bf5e6c217e6e7f/information-social-google-a73214f7cb.svg"
+                src="img/information-social-google.svg"
               ></SlIcon>
               Login with Google
             </SlButton>
           </div>
-        </div>
+        </form>
       </SlCard>
     </>
   );

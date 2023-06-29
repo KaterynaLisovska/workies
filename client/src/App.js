@@ -1,12 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
+import "normalize.css"
 import "@shoelace-style/shoelace/dist/themes/light.css";
+import "./App.css";
 import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path";
-import SignUpPage from "./src/pages/SignUp";
-import LoginPage from "./src/pages/Login";
-import ErrorPage from "./src/pages/Error";
-import RootLayout from "./src/pages/Root";
-import HomePage from "./src/pages/Home";
+import SignUpPage from "./pages/SignUp";
+import LoginPage from "./pages/Login";
+import ErrorPage from "./pages/Error";
+import RootLayout from "./pages/Root";
+import HomePage from "./pages/Home";
 
 const router = createBrowserRouter([
   {

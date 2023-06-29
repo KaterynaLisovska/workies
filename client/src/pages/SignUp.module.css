@@ -1,9 +1,6 @@
-.card {
-  width: 350px;
-}
-
-.h1 {
-  text-align: center;
+.sign_up_form {
+  align-self: center;
+  margin-top: 80px;
 }
 
 .icon {
@@ -12,11 +9,10 @@
 
 .hr {
   border: none;
-  border-top: 2px solid #e0e0e0;
-  color: #808080;
+  border-top: 1px solid var(--sl-color-neutral-200);
+  color: var(--sl-color-neutral-400);
   overflow: visible;
   text-align: center;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   height: 3px;
 }
 
@@ -25,5 +21,5 @@
   content: "Or";
   padding: 0 4px;
   position: relative;
-  top: -13px;
+  top: -11px;
 }
