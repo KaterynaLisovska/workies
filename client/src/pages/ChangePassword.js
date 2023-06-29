@@ -25,7 +25,7 @@ const ChangePasswordPage = () => {
     <>
       <SlCard className={`${classes.change_password_form}`}>
         <form className="container_column" onSubmit={submitHandler}>
-          <h1 className={classes.h1}>Change Password</h1>
+          <h1 className="h1">Change Password</h1>
           <div className="container_column">
             <SlInput
               onInput={inputHandler}

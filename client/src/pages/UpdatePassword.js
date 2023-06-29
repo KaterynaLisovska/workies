@@ -27,7 +27,7 @@ const UpdatePasswordPage = () => {
     <>
       <SlCard className={`${classes.update_password_form}`}>
         <form className="container_column" onSubmit={submitHandler}>
-          <h1 className={classes.h1}>Update Password</h1>
+          <h1 className="h1">Update Password</h1>
           <div className="container_column">
           <SlInput
               onInput={inputHandler}

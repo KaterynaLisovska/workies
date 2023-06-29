@@ -31,7 +31,7 @@ const LoginPage = () => {
     <>
       <SlCard className={`${classes.login_form}`}>
         <form className="container_column" onSubmit={submitHandler}>
-          <h1 className={classes.h1}>Login</h1>
+          <h1 className="h1">Login</h1>
           <div className="container_column">
             <SlInput
               onInput={inputHandler}

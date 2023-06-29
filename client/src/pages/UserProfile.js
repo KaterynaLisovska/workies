@@ -37,7 +37,7 @@ const UserProfilePage = () => {
     <>
       <SlCard className={`${classes.user_profile_form}`}>
         <form className="container_column" onSubmit={submitHandler}>
-          <h1>My profile page</h1>
+          <h1 className="h1">My profile page</h1>
           <div className="container_column">
             <SlInput
               onInput={inputHandler}

@@ -27,9 +27,9 @@ const SignUpPage = () => {
 
   return (
     <>
-      <SlCard className={`${classes.sign_up_form}`}>
+      <SlCard className={classes.sign_up_form}>
         <form className="container_column" onSubmit={submitHandler}>
-          <h1>Create your account</h1>
+          <h1 className="h1">Create your account</h1>
           <div className="container_column">
             <SlInput
               onInput={inputHandler}

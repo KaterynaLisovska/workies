@@ -38,3 +38,7 @@ body {
 .flex_end {
   justify-content: flex-end;
 }
+
+.h1 {
+  text-align: center;
+}
