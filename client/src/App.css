@@ -20,7 +20,7 @@ body {
 
 .container_row {
   flex-direction: row;
-  column-gap: 20px;
+  column-gap: 10px;
   display: flex;
 }
 
@@ -28,6 +28,11 @@ body {
   flex-direction: column;
   row-gap: 10px;
   display: flex;
+}
+
+.flex_center {
+  display: flex;
+  justify-content: center;
 }
 
 .flex_end {

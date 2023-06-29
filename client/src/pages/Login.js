@@ -18,7 +18,7 @@ const LoginPage = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(`Name: ${formData.email}, Email: ${formData.password}`);
+    console.log(`Email: ${formData.email}, Password: ${formData.password}`);
 
     if (formData.password !== formData.confirmationPassword) {
       //      TODO apply validation
