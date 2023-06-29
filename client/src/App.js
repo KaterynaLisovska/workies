@@ -9,6 +9,7 @@ import ErrorPage from "./pages/Error";
 import RootLayout from "./pages/Root";
 import HomePage from "./pages/Home";
 import ChangePasswordPage from "./pages/ChangePassword";
+import UpdatePasswordPage from "./pages/UpdatePassword";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "changepassword",
         element: <ChangePasswordPage />,
+      },
+      {
+        path: "updatepassword",
+        element: <UpdatePasswordPage />,
       },
     ],
   },
