@@ -10,6 +10,7 @@ import RootLayout from "./pages/Root";
 import HomePage from "./pages/Home";
 import ChangePasswordPage from "./pages/ChangePassword";
 import UpdatePasswordPage from "./pages/UpdatePassword";
+import UserProfilePage from "./pages/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "updatepassword",
         element: <UpdatePasswordPage />,
+      },
+      {
+        path: "userprofile",
+        element: <UserProfilePage />,
       },
     ],
   },

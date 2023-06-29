@@ -8,10 +8,14 @@ import {
   SlIcon,
 } from "@shoelace-style/shoelace/dist/react";
 
-import classes from "./Login.module.css";
+import classes from "./UserProfile.module.css";
 
-const LoginPage = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+const UserProfilePage = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    confirmationPassword: "",
+  });
 
   const inputHandler = (event) => {
     const { name, value } = event.target;
@@ -20,7 +24,9 @@ const LoginPage = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(`Email: ${formData.email}, Password: ${formData.password}`);
+    console.log(
+      `Email: ${formData.email}, Password: ${formData.password}, Confirmation Password: ${formData.confirmationPassword}`
+    );
 
     if (formData.password !== formData.confirmationPassword) {
       //      TODO apply validation
@@ -29,36 +35,62 @@ const LoginPage = () => {
 
   return (
     <>
-      <SlCard className={`${classes.login_form}`}>
+      <SlCard className={`${classes.user_profile_form}`}>
         <form className="container_column" onSubmit={submitHandler}>
-          <h1 className={classes.h1}>Login</h1>
+          <h1>My profile page</h1>
           <div className="container_column">
             <SlInput
               onInput={inputHandler}
               type="email"
               name="email"
-              placeholder="Enter email"
+              placeholder="Email"
+              required
+            />
+            <SlInput
+              onInput={inputHandler}
+              type="tel"
+              name="tel"
+              placeholder="Phone number"
+              required
+            />
+            <SlInput
+              onInput={inputHandler}
+              type="text"
+              name="firstname"
+              placeholder="First Name"
+              required
+            />
+            <SlInput
+              onInput={inputHandler}
+              type="text"
+              name="lastname"
+              placeholder="Last Name"
               required
             />
             <SlInput
               onInput={inputHandler}
               type="password"
               name="password"
-              placeholder="Enter password"
+              placeholder="Create password"
+              password-toggle
+              required
+            />
+            <SlInput
+              onInput={inputHandler}
+              type="password"
+              name="confirmationPassword"
+              placeholder="Confirm password"
               password-toggle
               required
             />
           </div>
-          <div className={`container_row flex_end`}>
-            <Link to="forgot_password">Forgot password?</Link>
-          </div>
           <SlButton variant="primary" type="submit">
-            Login
+            Sign Up
           </SlButton>
 
           <div className={`container_row flex_end`}>
-            <span>Don't have an account yet?</span>
-            <Link to="/signup">Sign Up</Link>
+            <span>Already have an account?</span>
+            <Link to="/login">Login</Link>
           </div>
           <div>
             <hr className={classes.hr} />
@@ -88,4 +120,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default UserProfilePage;

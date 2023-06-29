@@ -4,7 +4,7 @@ import { SlCard } from "@shoelace-style/shoelace/dist/react";
 import { SlInput } from "@shoelace-style/shoelace/dist/react";
 import { SlButton } from "@shoelace-style/shoelace/dist/react";
 
-import classes from "./Login.module.css";
+import classes from "./UpdatePassword.module.css";
 
 const UpdatePasswordPage = () => {
   const [formData, setFormData] = useState({password: "", confirmationPassword: ""});
