@@ -5,7 +5,6 @@ import {
   SlCard,
   SlInput,
   SlButton,
-  SlIcon,
 } from "@shoelace-style/shoelace/dist/react";
 
 import classes from "./UserProfile.module.css";
@@ -91,28 +90,6 @@ const UserProfilePage = () => {
           <div className={`container_row flex_end`}>
             <span>Already have an account?</span>
             <Link to="/login">Login</Link>
-          </div>
-          <div>
-            <hr className={classes.hr} />
-          </div>
-
-          <div className="container_column">
-            <SlButton>
-              <SlIcon
-                className={classes.icon}
-                slot="prefix"
-                src="img/information-social-facebook.svg"
-              ></SlIcon>
-              Login with Facebook
-            </SlButton>
-            <SlButton>
-              <SlIcon
-                className={classes.icon}
-                slot="prefix"
-                src="img/information-social-google.svg"
-              ></SlIcon>
-              Login with Google
-            </SlButton>
           </div>
         </form>
       </SlCard>

@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import "normalize.css"
+import "normalize.css";
 import "@shoelace-style/shoelace/dist/themes/light.css";
 import "./App.css";
 import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path";
@@ -32,12 +32,14 @@ const router = createBrowserRouter([
         element: <ChangePasswordPage />,
       },
       {
-        path: "updatepassword",
-        element: <UpdatePasswordPage />,
-      },
-      {
         path: "userprofile",
         element: <UserProfilePage />,
+        children: [
+          {
+            path: "updatepassword",
+            element: <UpdatePasswordPage />,
+          },
+        ],
       },
     ],
   },
@@ -48,7 +50,7 @@ const App = () => {
     "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/"
   );
 
-  return (<RouterProvider router={router} />);
+  return <RouterProvider router={router} />;
 };
 
 export default App;

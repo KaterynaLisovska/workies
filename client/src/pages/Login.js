@@ -50,7 +50,7 @@ const LoginPage = () => {
             />
           </div>
           <div className={`container_row flex_end`}>
-            <Link to="forgot_password">Forgot password?</Link>
+            <Link to="../changepassword">Forgot password?</Link>
           </div>
           <SlButton variant="primary" type="submit">
             Login

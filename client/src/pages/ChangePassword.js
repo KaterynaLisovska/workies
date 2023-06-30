@@ -21,6 +21,10 @@ const ChangePasswordPage = () => {
     }
   };
 
+  const cancelHandler = (event) => {
+    window.location.assign("/login");
+  };
+
   return (
     <>
       <SlCard className={`${classes.change_password_form}`}>
@@ -36,7 +40,7 @@ const ChangePasswordPage = () => {
             />
           </div>
           <div className="container_row flex_center">
-            <SlButton style={{ width: "100%" }}>Cancel</SlButton>
+            <SlButton style={{ width: "100%" }} onClick={cancelHandler}>Cancel</SlButton>
             <SlButton style={{ width: "100%" }} type="submit">
               Send request
             </SlButton>
