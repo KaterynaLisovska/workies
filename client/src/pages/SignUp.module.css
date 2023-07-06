@@ -17,9 +17,14 @@
 }
 
 .hr:after {
-  background: #fff;
+  background: var(--sl-color-primary-950);
   content: "Or";
   padding: 0 4px;
   position: relative;
   top: -11px;
+}
+
+.span {
+  color: var(--sl-color-danger-700);
+  visibility: visible;
 }
