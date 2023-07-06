@@ -35,9 +35,9 @@ const UserProfilePage = () => {
   return (
     <>
       <SlCard className={`${classes.user_profile_form}`}>
-        <form className="container_column" onSubmit={submitHandler}>
-          <h1 className="h1">My profile page</h1>
-          <div className="container_column">
+        <form className="column" onSubmit={submitHandler}>
+          <h1 className="text_position">My profile page</h1>
+          <div className="column">
             <SlInput
               onInput={inputHandler}
               type="email"
@@ -87,7 +87,7 @@ const UserProfilePage = () => {
             Sign Up
           </SlButton>
 
-          <div className={`container_row flex_end`}>
+          <div className={`row flex_end`}>
             <span>Already have an account?</span>
             <Link to="/login">Login</Link>
           </div>

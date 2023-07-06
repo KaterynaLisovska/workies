@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { SlCard } from "@shoelace-style/shoelace/dist/react";
 
-import classes from "./Error.module.css";
+import "../App.css";
 
 const ErrorPage = () => {
   return (
     <>
-      <SlCard className={classes.error_page_form}>
+      <SlCard className="form">
         <form>
-          <div className="container_column">
+          <div className="column">
             <span>404 Page not found</span>
             <Link to="/">Go to Home Page</Link>
           </div>

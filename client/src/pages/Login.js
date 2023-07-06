@@ -8,9 +8,9 @@ import {
   SlIcon,
 } from "@shoelace-style/shoelace/dist/react";
 
-import classes from "./Login.module.css";
+import "../App.css";
 
-const LoginPage = () => {
+const LogInPage = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const inputHandler = (event) => {
@@ -20,23 +20,26 @@ const LoginPage = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+
     console.log(`Email: ${formData.email}, Password: ${formData.password}`);
 
     if (formData.password !== formData.confirmationPassword) {
-      //      TODO apply validation
+      // TODO apply validation 
+      // NOTE check password length, check email and password (pair) in database  
     }
   };
 
   return (
     <>
-      <SlCard className={`${classes.login_form}`}>
-        <form className="container_column" onSubmit={submitHandler}>
-          <h1 className="h1">Login</h1>
-          <div className="container_column">
+      <SlCard className="form">
+        <form className="column" onSubmit={submitHandler}>
+          <h1 className="text_position">Log In</h1>
+          <div className="column">
             <SlInput
               onInput={inputHandler}
               type="email"
               name="email"
+              autocomplete="username"
               placeholder="Enter email"
               required
             />
@@ -45,41 +48,42 @@ const LoginPage = () => {
               type="password"
               name="password"
               placeholder="Enter password"
+              autocomplete="current-password"
               password-toggle
               required
             />
           </div>
-          <div className={`container_row flex_end`}>
+          <div className={`row flex_end`}>
             <Link to="../changepassword">Forgot password?</Link>
           </div>
           <SlButton variant="primary" type="submit">
-            Login
+            Log In
           </SlButton>
 
-          <div className={`container_row flex_end`}>
+          <div className={`row flex_end`}>
             <span>Don't have an account yet?</span>
             <Link to="/signup">Sign Up</Link>
           </div>
           <div>
-            <hr className={classes.hr} />
+            <hr className="hr" />
           </div>
-
-          <div className="container_column">
+          
+          <div className="column">
             <SlButton>
               <SlIcon
-                className={classes.icon}
+                className="icon"
                 slot="prefix"
                 src="img/information-social-facebook.svg"
               ></SlIcon>
-              Login with Facebook
+              Continue with Facebook
             </SlButton>
             <SlButton>
               <SlIcon
-                className={classes.icon}
+                className="icon"
                 slot="prefix"
                 src="img/information-social-google.svg"
               ></SlIcon>
-              Login with Google
+              Continue with Google
             </SlButton>
           </div>
         </form>
@@ -88,4 +92,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LogInPage;

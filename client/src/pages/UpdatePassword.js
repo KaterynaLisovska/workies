@@ -22,17 +22,22 @@ const UpdatePasswordPage = () => {
       //      TODO apply validation
     }
   };
-
+  // TODO please add here handling for some hash code in url (store this code in hidden input field)
+  // TODO http://localhost:3000/updatepassword/?code=SOME_HASH_CODE
+  // TODO You have to submit this code with a new password
+  // TODO The flow is: store new password and invalidate the temporary code (this will prevent using a link with 
+  // this code more then once)
   return (
     <>
       <SlCard className={`${classes.update_password_form}`}>
-        <form className="container_column" onSubmit={submitHandler}>
-          <h1 className="h1">Update Password</h1>
-          <div className="container_column">
+        <form className="column" onSubmit={submitHandler}>
+          <h1 className="text_position">Update Password</h1>
+          <div className="column">
           <SlInput
               onInput={inputHandler}
               type="password"
               name="password"
+              autocomplete="new-password"
               placeholder="Create new password"
               password-toggle
               required
@@ -41,6 +46,7 @@ const UpdatePasswordPage = () => {
               onInput={inputHandler}
               type="password"
               name="confirmationPassword"
+              autocomplete="new-password"
               placeholder="Confirm new password"
               password-toggle
               required
