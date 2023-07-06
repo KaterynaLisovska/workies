@@ -18,27 +18,53 @@ body {
   display: flex;
 }
 
-.container_row {
+.row {
   flex-direction: row;
   column-gap: 10px;
   display: flex;
 }
 
-.container_column {
+.column {
   flex-direction: column;
   row-gap: 10px;
   display: flex;
-}
-
-.flex_center {
-  display: flex;
-  justify-content: center;
 }
 
 .flex_end {
   justify-content: flex-end;
 }
 
-.h1 {
+.text_position h1 {
   text-align: center;
+}
+
+.form {
+  min-width: 400px;
+  align-self: center;
+  margin-top: 80px;
+}
+
+.button_size {
+  flex: 1;
+}
+
+.icon {
+  font-size: 32px;
+}
+
+.hr {
+  border: none;
+  border-top: 1px solid var(--sl-color-neutral-200);
+  color: var(--sl-color-neutral-400);
+  overflow: visible;
+  text-align: center;
+  height: 3px;
+}
+
+.hr:after {
+  background: #fff;
+  content: "Or";
+  padding: 0 4px;
+  position: relative;
+  top: -11px;
 }

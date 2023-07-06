@@ -4,7 +4,7 @@ import "@shoelace-style/shoelace/dist/themes/light.css";
 import "./App.css";
 import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path";
 import SignUpPage from "./pages/SignUp";
-import LoginPage from "./pages/Login";
+import LogInPage from "./pages/LogIn";
 import ErrorPage from "./pages/Error";
 import RootLayout from "./pages/Root";
 import HomePage from "./pages/Home";
@@ -25,12 +25,15 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <LoginPage />,
+        element: <LogInPage />,
       },
       {
         path: "changepassword",
         element: <ChangePasswordPage />,
       },
+      //   TODO 'updatepassword' route must be available with root level route, but not as a child route of 'userprofile'
+      //   TODO please also find the suggestion about 'code' path param for this route in UpdatePassword.js
+      //   TODO if you will use the 'updatepassword' route from profile page, you can skip 'code' path param because you will be loggedin for this case
       {
         path: "userprofile",
         element: <UserProfilePage />,
