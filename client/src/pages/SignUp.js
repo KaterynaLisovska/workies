@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FlexiPasswordChecklist } from "react-flexi-password-checklist";
 
 import { SlCard } from "@shoelace-style/shoelace/dist/react";
 import { SlInput } from "@shoelace-style/shoelace/dist/react";
@@ -7,12 +8,19 @@ import { SlButton } from "@shoelace-style/shoelace/dist/react";
 import { SlIcon } from "@shoelace-style/shoelace/dist/react";
 
 import classes from "./SignUp.module.css";
-import "../App.css";
 
 const SignUpPage = () => {
-  const [formData, setFormData] = useState({email: "", password: "", confirmationPassword: "",});
-  const [error, setError] = useState();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    confirmationPassword: "",
+  });
 
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [allFieldsRequired, setAllFieldsRequired] = useState(false);
+
+  const navigate = useNavigate();
   const formRef = useRef(null);
 
   const inputHandler = (event) => {
@@ -20,18 +28,57 @@ const SignUpPage = () => {
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
+  const successHandler = (event) => {
+    navigate("/success");
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const parts = email.split("@");
+
+    if (parts.length !== 2) {
+      return false;
+    }
+
+    const domainParts = parts[1].split(".");
+
+    return emailRegex.test(email) && domainParts.length === 2;
+  };
+
+  const validatePasswordMatch = (password, confirmationPassword) => {
+    if (password === confirmationPassword) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
-    
-    if (formData.password === formData.confirmationPassword && formData.password.length < 8) {
-      setError(1);
-      console.log("Password less than eight characters");
-    } else if (formData.password !== formData.confirmationPassword) {
-      setError(2);
-      console.log("Passwords don't match");
+
+    const isEmailValid = validateEmail(formData.email);
+    const isPasswordMatch = validatePasswordMatch(
+      formData.password,
+      formData.confirmationPassword
+    );
+
+    const fieldRequired =
+      formData.email.trim() !== "" &&
+      formData.password.trim() !== "" &&
+      formData.confirmationPassword.trim() !== "";
+
+    if (!fieldRequired) {
+      return;
     } else {
-      setError("");
-      console.log(`Email: ${formData.email}, Password: ${formData.password}, Confirmation Password: ${formData.confirmationPassword}`);
+      setAllFieldsRequired(true);
+      if (!isEmailValid) {
+        setEmailError("Invalid email format");
+        return;
+      } else if (!isPasswordMatch) {
+        setPasswordError("Passwords don't match");
+        return;
+      }
+
       formRef.current.reset();
     }
   };
@@ -39,8 +86,13 @@ const SignUpPage = () => {
   return (
     <>
       <SlCard className={classes.sign_up_form}>
-        <form className="column" onSubmit={submitHandler} ref={formRef}>
-          <h1 className="text_position">Create your account</h1>
+        <form
+          className="column center"
+          onSubmit={submitHandler}
+          ref={formRef}
+          noValidate
+        >
+          <h1>Create your account</h1>
           <div className="column">
             <SlInput
               onInput={inputHandler}
@@ -48,8 +100,9 @@ const SignUpPage = () => {
               name="email"
               autocomplete="username"
               placeholder="Email"
-              required
+              className={emailError ? classes.errorInput : ""}
             />
+            {emailError && <p>{emailError}</p>}
             <SlInput
               onInput={inputHandler}
               type="password"
@@ -57,7 +110,6 @@ const SignUpPage = () => {
               autocomplete="new-password"
               placeholder="Create password"
               password-toggle
-              required
             />
             <SlInput
               onInput={inputHandler}
@@ -66,11 +118,31 @@ const SignUpPage = () => {
               autocomplete="new-password"
               placeholder="Confirm password"
               password-toggle
-              required
             />
           </div>
-          { error === 1 ? <span className={classes.span}>Your password should consist of at least eight characters</span> : 
-            error === 2 ? <span className={classes.span}>Your passwords don't match!</span> : ""}
+          {allFieldsRequired && <p>All fields are required!</p>}
+          <FlexiPasswordChecklist
+            password={formData.password}
+            confirmationPassword={formData.confirmationPassword}
+            matchPasswords={validatePasswordMatch(formData.password, formData.confirmationPassword)}
+            config={{
+              minLength: 12,
+              requireCapital: true,
+              requireNumber: true,
+              requireSpecialChar: true,
+              matchPasswords: true,
+              conditionTexts: {
+                minLength: "Password must consist of 12 characters",
+                requireCapital:
+                  "Password must have at least one uppercase letter",
+                requireNumber: "Password must have at least one number",
+                requireSpecialChar:
+                  "Password must have at least one special character",
+                matchPasswordsText: "Passwords must match",
+              },
+            }}
+          />
+          {/* <SlButton variant="primary" type="submit" onClick={true ? "" : successHandler}> */}
           <SlButton variant="primary" type="submit">
             Sign Up
           </SlButton>

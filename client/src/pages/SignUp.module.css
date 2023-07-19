@@ -1,6 +1,7 @@
 .sign_up_form {
+  width: 50%;
   align-self: center;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .icon {
@@ -27,4 +28,15 @@
 .span {
   color: var(--sl-color-danger-700);
   visibility: visible;
+}
+
+p {
+  color: var(--sl-color-danger-700);
+  padding-left: 2px;
+  margin: 0px;
+}
+
+.errorInput {
+  color: var(--sl-color-danger-700);
+  border: 1px solid var(--sl-color-neutral-1000);
 }
