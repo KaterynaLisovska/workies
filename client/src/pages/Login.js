@@ -8,8 +8,6 @@ import {
   SlIcon,
 } from "@shoelace-style/shoelace/dist/react";
 
-import "../App.css";
-
 const LogInPage = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
 
@@ -33,7 +31,7 @@ const LogInPage = () => {
     <>
       <SlCard className="form">
         <form className="column" onSubmit={submitHandler}>
-          <h1 className="text_position">Log In</h1>
+          <h1 className="centered">Log In</h1>
           <div className="column">
             <SlInput
               onInput={inputHandler}
