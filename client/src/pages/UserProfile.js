@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import {
-  SlCard,
-  SlInput,
-  SlButton,
-} from "@shoelace-style/shoelace/dist/react";
+import { SlInput, SlButton } from "@shoelace-style/shoelace/dist/react";
 
 import classes from "./UserProfile.module.css";
 
@@ -34,54 +30,75 @@ const UserProfilePage = () => {
 
   return (
     <>
-      <SlCard className={`${classes.user_profile_form}`}>
-        <form className="column" onSubmit={submitHandler}>
+      <div className={`${classes.user_profile_form}`}>
+        <div className="column" onSubmit={submitHandler}>
           <h1 className="text_position">My profile page</h1>
           <div className="column">
-            <SlInput
-              onInput={inputHandler}
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-            />
-            <SlInput
-              onInput={inputHandler}
-              type="tel"
-              name="tel"
-              placeholder="Phone number"
-              required
-            />
-            <SlInput
-              onInput={inputHandler}
-              type="text"
-              name="firstname"
-              placeholder="First Name"
-              required
-            />
-            <SlInput
-              onInput={inputHandler}
-              type="text"
-              name="lastname"
-              placeholder="Last Name"
-              required
-            />
-            <SlInput
-              onInput={inputHandler}
-              type="password"
-              name="password"
-              placeholder="Create password"
-              password-toggle
-              required
-            />
-            <SlInput
-              onInput={inputHandler}
-              type="password"
-              name="confirmationPassword"
-              placeholder="Confirm password"
-              password-toggle
-              required
-            />
+            <fieldset>
+              <legend>User data</legend>
+              <label>Email</label>
+              <SlInput
+                onInput={inputHandler}
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+              <label>Cellphone</label>
+              <SlInput
+                onInput={inputHandler}
+                type="tel"
+                name="tel"
+                placeholder="Phone number"
+                required
+              />
+              <label>First Name</label>
+              <SlInput
+                onInput={inputHandler}
+                type="text"
+                name="firstname"
+                placeholder="First Name"
+                required
+              />
+              <label>Last Name</label>
+              <SlInput
+                onInput={inputHandler}
+                type="text"
+                name="lastname"
+                placeholder="Last Name"
+                required
+              />
+            </fieldset>
+            <fieldset>
+              <legend>Password</legend>
+              <label>Current Password</label>
+              <SlInput
+                onInput={inputHandler}
+                type="password"
+                name="password"
+                placeholder="Create password"
+                password-toggle
+                required
+              />
+              <label>New Password</label>
+              <SlInput
+                onInput={inputHandler}
+                type="password"
+                name="newPassword"
+                placeholder="New password"
+                password-toggle
+                required
+              />
+              <label>Confirm New Password</label>
+              <SlInput
+                onInput={inputHandler}
+                type="password"
+                name="confirmNewPassword"
+                placeholder="Confirm new password"
+                password-toggle
+                required
+              />
+            </fieldset>
           </div>
           <SlButton variant="primary" type="submit">
             Sign Up
@@ -91,8 +108,8 @@ const UserProfilePage = () => {
             <span>Already have an account?</span>
             <Link to="/login">Login</Link>
           </div>
-        </form>
-      </SlCard>
+        </div>
+      </div>
     </>
   );
 };
